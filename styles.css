@@ -1,0 +1,26 @@
+#output-container {
+    display:grid;
+    grid-template-columns: 600px auto;
+    column-gap: 2em;
+    height: 600px;
+}
+#shape-container {
+    background-color: black;
+    position: relative;
+}
+#shape-details {
+    background-color: teal;
+}
+.shape {
+    position: absolute;
+}
+.circle {
+    border-radius: 50%;
+    background-color: purple;
+}
+.triangle {
+    width: 0;
+    height: 0;
+    border-bottom: solid yellow;
+    border-right: solid transparent;
+}
