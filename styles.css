@@ -7,6 +7,7 @@
 #shape-container {
     background-color: black;
     position: relative;
+    overflow: hidden;
 }
 #shape-details {
     background-color: teal;
@@ -21,6 +22,4 @@
 .triangle {
     width: 0;
     height: 0;
-    border-bottom: solid yellow;
-    border-right: solid transparent;
 }

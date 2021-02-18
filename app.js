@@ -8,23 +8,34 @@ let triangleButton = document.getElementById("triangle-btn");
 
 class Shape {
     constructor(width, height) {
+        this.width = width;
+        this.height = height;
         this.newShape = document.createElement("div");
         this.newShape.className = "shape"
         this.newShape.style.top = Math.floor(Math.random() * 600) + 1 + "px";
         this.newShape.style.left = Math.floor(Math.random() * 600) + 1 + "px";
-        this.width = width;
-        this.height = height;
-        
     }
 };
 
 class Square extends Shape {
     constructor(width, height) {
         super(width, height);
+        console.log(width, height);
         this.newShape.style.width = width + "px";
         this.newShape.style.height = height + "px";
         this.newShape.style.backgroundColor = "red";
         shapeContainer.appendChild(this.newShape);
+        this.newShape.addEventListener("click", this.describe(width, height));
+    }
+
+    describe(width, height) {
+        let shapeName = "square";
+        let area = this.width * this.height;
+        let perimeter = this.width*2 + this.height*2;
+        console.log(this.width);
+        this.details = document.createElement("p");
+        this.details.textContent = `Shape: ${shapeName}<br> Area: ${area}<br> Perimeter: ${perimeter}`
+        shapeDetailContainer.appendChild(this.details);
     }
 };
 
@@ -56,9 +67,10 @@ class Triangle extends Shape {
         this.area = this.height**2
         this.perimeter = 2 * this.height + Math.sqrt(2) * this.height; 
         this.newShape.classList.add("triangle");
-        this.newShape.style.borderBottom = height + "px";
-        this.newShape.style.borderRight = height + "px";
+        this.newShape.style.borderBottom = `${this.height}px solid yellow`
+        this.newShape.style.borderRight = `${this.height}px solid transparent`
         console.log(this.newShape);
+        console.log(this.height);
         shapeContainer.appendChild(this.newShape);
     }
 }
