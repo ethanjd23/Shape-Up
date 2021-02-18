@@ -14,8 +14,13 @@ class Shape {
         this.newShape.className = "shape"
         this.newShape.style.top = Math.floor(Math.random() * 600) + 1 + "px";
         this.newShape.style.left = Math.floor(Math.random() * 600) + 1 + "px";
+        this.newShape.addEventListener("dblclick", () => this.remove(this.newShape, this.details));
     }
+
     describe(width, height) {
+        if (shapeDetailContainer.firstChild) {
+        shapeDetailContainer.removeChild(shapeDetailContainer.firstChild);
+        }; // clearing details pane
         let area = this.width * this.height;
         let perimeter = this.width*2 + this.height*2;
         this.details = document.createElement("p");
@@ -27,18 +32,23 @@ class Shape {
                                     Perimeter: ${perimeter}`
         shapeDetailContainer.appendChild(this.details);
     }
+
+    remove(shape, details) {
+        shapeContainer.removeChild(shape);
+        shapeDetailContainer.removeChild(details);
+    }
 };
 
 class Square extends Shape {
     constructor(width, height) {
         super(width, height);
         this.shapeName = "Square";
-        console.log(width, height);
         this.newShape.style.width = width + "px";
         this.newShape.style.height = height + "px";
         this.newShape.style.backgroundColor = "red";
         shapeContainer.appendChild(this.newShape);
         this.newShape.addEventListener("click", () => this.describe(width, height));
+        
     }
 
 };
@@ -65,10 +75,13 @@ class Circle extends Shape {
         this.newShape.style.width = diameter + "px";
         this.newShape.style.height = diameter + "px";
         shapeContainer.appendChild(this.newShape);
-        this.newShape.addEventListener("click", () => this.describe(width, height));
+        this.newShape.addEventListener("click", () => this.describe(width, height, radius));
     }
 
     describe(width, height) {
+        if (shapeDetailContainer.firstChild) {
+            shapeDetailContainer.removeChild(shapeDetailContainer.firstChild);
+            }; // clearing details pane
         let area = Math.PI * this.radius**2;
         let perimeter = 2 * Math.PI * this.radius;
         this.details = document.createElement("p");
@@ -84,16 +97,18 @@ class Circle extends Shape {
 class Triangle extends Shape {
     constructor(width, height) {
         super(width, height);
+        this.shapeName = "Triangle";
         this.newShape.classList.add("triangle");
         this.newShape.style.borderBottom = `${this.height}px solid yellow`
         this.newShape.style.borderRight = `${this.height}px solid transparent`
-        console.log(this.newShape);
-        console.log(this.height);
         shapeContainer.appendChild(this.newShape);
         this.newShape.addEventListener("click", () => this.describe(width, height));
     }
 
     describe(width, height) {
+        if (shapeDetailContainer.firstChild) {
+            shapeDetailContainer.removeChild(shapeDetailContainer.firstChild);
+            }; // clearing details pane
         let area = 0.5 * this.height**2;
         let perimeter = this.height * (2 + Math.sqrt(2));
         this.details = document.createElement("p");
