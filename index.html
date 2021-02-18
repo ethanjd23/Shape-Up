@@ -19,43 +19,60 @@
 
     <title>Shape Up or Shape out</title>
   </head>
-  <body>
-    <form action="">
-      <div id="square-form-container">
-        <label for="square">Square Creator</label>
+  <body class="col-12">
+    <form  class="col-6" action="">
+      <div class="input-group mb-2 mt-2 d-flex" id="square-form-container">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="square-label" for="square">Square Sides Length</span>
+        </div>
         <input
+          class="form-control"
+          area-describedby="square-label"
           type="number"
           id="square-size"
           name="square-size"
           placeholder="size"
         />
-        <input type="button" value="insert" name="square" id="square-btn" />
+        <input class="btn-danger" type="button" value="Insert square" name="square" id="square-btn" />
       </div>
-      <div id="rectangle-form-container">
-        <label for="rectangle">Rectangle Creator</label>
+      <div class="input group d-flex mb-2" id="rectangle-form-container">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="rectangle-width-label" for="rectangle">Rectangle Width</span>
+        </div>
         <input
+          class="form-control"
           type="number"
           id="rectangle-width"
           name="rectangle-width"
           placeholder="width"
+          aria-describedby="rectangle-width-label"
         />
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="rectangle-height-label" for="rectangle">Rectangle Height</span>
+        </div>
         <input
+          class="form-control"
           type="number"
           id="rectangle-height"
           name="rectangle-height"
           placeholder="height"
+          aria-describedby="rectangle-height-label"
         />
-        <input type="button" id="rectangle-btn" value="insert" name="rectangle" />
+        <input class="btn-success" type="button" id="rectangle-btn" value="Insert rectangle" name="rectangle" />
       </div>
-      <div id="circle-form-container">
-        <label for="circle">Circle Creator</label>
-        <input type="number" id="circle-radius" name="radius" placeholder="radius" />
-        <input type="button" id="circle-btn" value="insert" name="radius" />
+      <div class="input group d-flex mb-2" id="circle-form-container">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="circle-label" for="circle">Circle Radius</span>
+        </div>
+        <input class="form-control" aria-describedby="circle-label" type="number" id="circle-radius" name="radius" placeholder="radius" />
+        <input class="btn-info" type="button" id="circle-btn" value="Insert circle" name="radius" />
       </div>
-      <div id="triangle-form-container">
-        <label for="triangle">Triangle Creator</label>
-        <input type="number" id="triangle-height" name="height" placeholder="height" />
-        <input type="button" id="triangle-btn" value="insert" name="height" />
+      <div class="input-group d-flex mb-2" id="triangle-form-container">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="triangle-label" for="triangle">Triangle Height</span>
+        </div>
+        <input class="form-control" aria-describedby="triangle-label" type="number" id="triangle-height" name="height" placeholder="height" />
+        <input class="btn-warning" type="button" id="triangle-btn" value="Insert triangle" name="height" />
       </div>
     </form>
     <div id="output-container">

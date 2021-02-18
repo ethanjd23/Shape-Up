@@ -1,11 +1,11 @@
 #output-container {
     display:grid;
-    grid-template-columns: 600px auto;
+    grid-template-columns: 600px 15.547vw;
     column-gap: 2em;
     height: 600px;
 }
 #shape-container {
-    background-color: black;
+    background-color: teal;
     position: relative;
     overflow: hidden;
 }
@@ -14,6 +14,7 @@
 }
 .shape {
     position: absolute;
+    opacity: 50%;
 }
 .circle {
     border-radius: 50%;
@@ -22,4 +23,7 @@
 .triangle {
     width: 0;
     height: 0;
+}
+.shape-details {
+    display: flex;
 }
