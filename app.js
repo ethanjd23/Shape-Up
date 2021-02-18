@@ -8,70 +8,101 @@ let triangleButton = document.getElementById("triangle-btn");
 
 class Shape {
     constructor(width, height) {
-        this.width = width;
-        this.height = height;
+        this.width = Number(width);
+        this.height = Number(height);
         this.newShape = document.createElement("div");
         this.newShape.className = "shape"
         this.newShape.style.top = Math.floor(Math.random() * 600) + 1 + "px";
         this.newShape.style.left = Math.floor(Math.random() * 600) + 1 + "px";
+    }
+    describe(width, height) {
+        let area = this.width * this.height;
+        let perimeter = this.width*2 + this.height*2;
+        this.details = document.createElement("p");
+        this.details.className = "shape-details"
+        this.details.innerHTML = `Shape: ${this.shapeName}<br>
+                                    Width: ${this.width}<br>
+                                    Height: ${this.height}<br>
+                                    Area: ${area}<br> 
+                                    Perimeter: ${perimeter}`
+        shapeDetailContainer.appendChild(this.details);
     }
 };
 
 class Square extends Shape {
     constructor(width, height) {
         super(width, height);
+        this.shapeName = "Square";
         console.log(width, height);
         this.newShape.style.width = width + "px";
         this.newShape.style.height = height + "px";
         this.newShape.style.backgroundColor = "red";
         shapeContainer.appendChild(this.newShape);
-        this.newShape.addEventListener("click", this.describe(width, height));
+        this.newShape.addEventListener("click", () => this.describe(width, height));
     }
 
-    describe(width, height) {
-        let shapeName = "square";
-        let area = this.width * this.height;
-        let perimeter = this.width*2 + this.height*2;
-        console.log(this.width);
-        this.details = document.createElement("p");
-        this.details.textContent = `Shape: ${shapeName}<br> Area: ${area}<br> Perimeter: ${perimeter}`
-        shapeDetailContainer.appendChild(this.details);
-    }
 };
 
 class Rectangle extends Shape {
     constructor(width, height) {
         super(width, height);
+        this.shapeName = "Rectangle";
         this.newShape.style.width = width + "px";
         this.newShape.style.height = height + "px";
         this.newShape.style.backgroundColor = "green";
         shapeContainer.appendChild(this.newShape);
+        this.newShape.addEventListener("click", () => this.describe(width, height));
     }
 };
 
 class Circle extends Shape {
     constructor(width, height, radius) {
         super(width, height);
-        this.radius = radius;
+        this.radius = Number(radius);
+        this.shapeName = "Circle";
         this.newShape.classList.add("circle");
         let diameter = this.radius * 2;
         this.newShape.style.width = diameter + "px";
         this.newShape.style.height = diameter + "px";
         shapeContainer.appendChild(this.newShape);
+        this.newShape.addEventListener("click", () => this.describe(width, height));
+    }
+
+    describe(width, height) {
+        let area = Math.PI * this.radius**2;
+        let perimeter = 2 * Math.PI * this.radius;
+        this.details = document.createElement("p");
+        this.details.className = "shape-details"
+        this.details.innerHTML = `Shape: ${this.shapeName}<br>
+                                    Radius: ${this.radius.toFixed(2)}<br>
+                                    Area: ${area.toFixed(2)}<br> 
+                                    Perimeter: ${perimeter.toFixed(2)}`
+        shapeDetailContainer.appendChild(this.details);
     }
 };
 
 class Triangle extends Shape {
     constructor(width, height) {
         super(width, height);
-        this.area = this.height**2
-        this.perimeter = 2 * this.height + Math.sqrt(2) * this.height; 
         this.newShape.classList.add("triangle");
         this.newShape.style.borderBottom = `${this.height}px solid yellow`
         this.newShape.style.borderRight = `${this.height}px solid transparent`
         console.log(this.newShape);
         console.log(this.height);
         shapeContainer.appendChild(this.newShape);
+        this.newShape.addEventListener("click", () => this.describe(width, height));
+    }
+
+    describe(width, height) {
+        let area = 0.5 * this.height**2;
+        let perimeter = this.height * (2 + Math.sqrt(2));
+        this.details = document.createElement("p");
+        this.details.className = "shape-details"
+        this.details.innerHTML = `Shape: ${this.shapeName}<br>
+                                    Legs Length: ${this.height}<br>
+                                    Area: ${area.toFixed(2)}<br> 
+                                    Perimeter: ${perimeter.toFixed(2)}`
+        shapeDetailContainer.appendChild(this.details);
     }
 }
 
