@@ -1,5 +1,6 @@
 let shapeContainer = document.getElementById("shape-container");
 let shapeDetailContainer = document.getElementById("shape-details");
+let shapeDetailText = document.getElementById("shape-details-text");
 let squareButton = document.getElementById("square-btn");
 let rectangleButton = document.getElementById("rectangle-btn");
 let circleButton = document.getElementById("circle-btn");
@@ -18,24 +19,18 @@ class Shape {
     }
 
     describe(width, height) {
-        if (shapeDetailContainer.firstChild) {
-        shapeDetailContainer.removeChild(shapeDetailContainer.firstChild);
-        }; // clearing details pane
         let area = this.width * this.height;
         let perimeter = this.width*2 + this.height*2;
-        this.details = document.createElement("p");
-        this.details.className = "shape-details"
-        this.details.innerHTML = `Shape: ${this.shapeName}<br>
+        shapeDetailText.innerHTML = `Shape: ${this.shapeName}<br>
                                     Width: ${this.width}<br>
                                     Height: ${this.height}<br>
                                     Area: ${area}<br> 
-                                    Perimeter: ${perimeter}`
-        shapeDetailContainer.appendChild(this.details);
+                                    Perimeter: ${perimeter}`;
     }
 
     remove(shape, details) {
         shapeContainer.removeChild(shape);
-        shapeDetailContainer.removeChild(details);
+        shapeDetailText.innerHTML = ``;
     }
 };
 
@@ -79,18 +74,12 @@ class Circle extends Shape {
     }
 
     describe(width, height) {
-        if (shapeDetailContainer.firstChild) {
-            shapeDetailContainer.removeChild(shapeDetailContainer.firstChild);
-            }; // clearing details pane
         let area = Math.PI * this.radius**2;
         let perimeter = 2 * Math.PI * this.radius;
-        this.details = document.createElement("p");
-        this.details.className = "shape-details"
-        this.details.innerHTML = `Shape: ${this.shapeName}<br>
+        shapeDetailText.innerHTML = `Shape: ${this.shapeName}<br>
                                     Radius: ${this.radius.toFixed(2)}<br>
                                     Area: ${area.toFixed(2)}<br> 
                                     Perimeter: ${perimeter.toFixed(2)}`
-        shapeDetailContainer.appendChild(this.details);
     }
 };
 
@@ -106,18 +95,12 @@ class Triangle extends Shape {
     }
 
     describe(width, height) {
-        if (shapeDetailContainer.firstChild) {
-            shapeDetailContainer.removeChild(shapeDetailContainer.firstChild);
-            }; // clearing details pane
         let area = 0.5 * this.height**2;
         let perimeter = this.height * (2 + Math.sqrt(2));
-        this.details = document.createElement("p");
-        this.details.className = "shape-details"
-        this.details.innerHTML = `Shape: ${this.shapeName}<br>
+        shapeDetailText.innerHTML = `Shape: ${this.shapeName}<br>
                                     Legs Length: ${this.height}<br>
                                     Area: ${area.toFixed(2)}<br> 
                                     Perimeter: ${perimeter.toFixed(2)}`
-        shapeDetailContainer.appendChild(this.details);
     }
 }
 

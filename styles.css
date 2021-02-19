@@ -5,7 +5,7 @@
     height: 600px;
 }
 #shape-container {
-    background-color: teal;
+    background-color: darkslategray;
     position: relative;
     overflow: hidden;
 }
@@ -24,6 +24,11 @@
     width: 0;
     height: 0;
 }
-.shape-details {
-    display: flex;
+br {   
+    content: "A" !important;
+    display: block !important;
+    margin-bottom: 1em !important;
+}
+#shape-details-text {
+    margin-left: 0.5em;
 }
